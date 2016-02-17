@@ -25,13 +25,13 @@ interfaces:
                 ip_and_mask: "10.1.1.2/30"
             swp2:
                 ip_and_mask: "10.1.1.10/30"
-   spine02:
-       loopback: "10.2.1.6"
-       int_numbered:
-           swp1:
-               ip_and_mask: "10.1.1.6/30"
-           swp2:
-               ip_and_mask: "10.1.1.14/30"
+    spine02:
+        loopback: "10.2.1.6"
+        int_numbered:
+            swp1:
+                ip_and_mask: "10.1.1.6/30"
+            swp2:
+                ip_and_mask: "10.1.1.14/30"
     server01:
         int_numbered:
             eth1:
