@@ -1,0 +1,9 @@
+[switches]
+leaf01
+leaf02
+spine01
+spine02
+
+[servers]
+server01
+server02

@@ -1,0 +1,17 @@
+---
+- hosts: switches
+  user: cumulus
+  become: yes
+  become_method: sudo
+  roles:
+    - bgp-numbered
+  handlers:
+    - include : handlers/main.yml
+- hosts: servers
+  user: cumulus
+  become: yes
+  become_method: sudo
+  roles:
+    - servers
+  handlers:
+    - include : handlers/main.yml

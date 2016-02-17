@@ -1,0 +1,10 @@
+graph vx {
+
+   "leaf01":"swp51" -- "spine01":"swp1"
+   "leaf02":"swp51" -- "spine01":"swp2"
+   "leaf01":"swp52" -- "spine02":"swp1"
+   "leaf02":"swp52" -- "spine02":"swp2"
+
+   "server01":"eth1" -- "leaf01":"swp1"
+   "server02":"eth2" -- "leaf02":"swp2"
+}
