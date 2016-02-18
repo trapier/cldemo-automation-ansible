@@ -1,6 +1,6 @@
 
 - name: reload networking
-  command: ifreload -s
+  command: ifreload -a
 
 - name: reload networking legacy
   command: ifdown -a && ifup -a
