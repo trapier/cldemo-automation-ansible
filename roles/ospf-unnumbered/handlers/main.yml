@@ -1,0 +1,9 @@
+
+- name: reload networking
+  command: ifreload -s
+
+- name: reload networking legacy
+  command: ifdown -a && ifup -a
+
+- name: restart quagga
+  command: echo hi

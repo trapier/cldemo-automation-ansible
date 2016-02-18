@@ -5,13 +5,9 @@
   become_method: sudo
   roles:
     - ospf-numbered
-  handlers:
-    - include : handlers/main.yml
 - hosts: servers
   user: cumulus
   become: yes
   become_method: sudo
   roles:
     - servers
-  handlers:
-    - include : handlers/main.yml
