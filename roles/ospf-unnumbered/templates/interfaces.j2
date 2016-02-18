@@ -1,8 +1,5 @@
 {% set intvars = interfaces[ansible_hostname] %}
 {% set loopback_ip = intvars.loopback -%}
-{% if intvars.bridges is defined -%}
-{% set swbridges = intvars.bridges -%}
-{% endif -%}
 
 auto lo
 iface lo inet loopback
@@ -19,6 +16,6 @@ iface eth0 inet dhcp
 
 auto {{ intname }}
 iface {{ intname }}
-  address {{ loopback }}/32
+  address {{ loopback_ip }}/32
 {% endfor -%}
 {% endif -%}

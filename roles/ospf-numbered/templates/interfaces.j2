@@ -1,8 +1,5 @@
 {% set intvars = interfaces[ansible_hostname] %}
 {% set loopback_ip = intvars.loopback -%}
-{% if intvars.bridges is defined -%}
-{% set swbridges = intvars.bridges -%}
-{% endif -%}
 
 auto lo
 iface lo inet loopback
