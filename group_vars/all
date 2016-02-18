@@ -35,7 +35,7 @@ interfaces:
                 ip_and_mask: "10.1.1.6/30"
             swp2:
                 ip_and_mask: "10.1.1.14/30"
-        int_unnumbered: ["swp2"]
+        int_unnumbered: ["swp1", "swp2"]
     server01:
         int_numbered:
             eth1:

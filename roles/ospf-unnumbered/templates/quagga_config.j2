@@ -3,18 +3,12 @@
 {% set int_numbered = intvars.int_numbered -%}
 {% if int_numbered is defined -%}
 {% for item in int_numbered -%}
-{% if item in intvars.int_unnumbered -%}
+interface lo
+  ip ospf area 0.0.0.0
 interface {{item}}
   ip ospf network point-to-point
+  ip ospf area 0.0.0.0
 !
-{% else -%}
-#interface lo
-#  ip ospf area 0.0.0.0
-#interface {{item}}
-#  ip ospf network point-to-point
-#  ip ospf area 0.0.0.0
-!
-{% endif -%}
 {% endfor -%}
 {% endif -%}
 !
@@ -24,5 +18,4 @@ interface {{item}}
 router-id {{ loopback_ip }}
 router ospf
   ospf router-id {{ loopback_ip }}
-  network {{ loopback_ip }}/32 area 0.0.0.0
 !
