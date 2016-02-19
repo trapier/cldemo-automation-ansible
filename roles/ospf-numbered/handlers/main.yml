@@ -3,7 +3,7 @@
   command: ifreload -a
 
 - name: reload networking legacy
-  command: ifdown -a && ifup -a
+  shell: ifdown -a && ifup -a
 
 - name: restart quagga
   service: name=quagga state=restarted
