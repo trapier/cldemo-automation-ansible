@@ -10,7 +10,7 @@ router bgp {{ intvars.asn }}
   bgp router-id {{ loopback_ip }}
 {% if int_numbered is defined -%}
 {% for item in int_numbered -%}
-{% if item in int_unnumbered -%}
+{% if item in intvars.int_unnumbered -%}
   neighbor {{ item }} remote-as external
 {% endif -%}
 {% endfor -%}
