@@ -1,0 +1,21 @@
+{% set intvars = interfaces[ansible_hostname] %}
+{% set loopback_ip = intvars.loopback -%}
+
+auto lo
+iface lo inet loopback
+{% if loopback_ip is defined -%}
+  address {{ loopback_ip }}/32
+{% endif -%}
+
+auto eth0
+iface eth0 inet dhcp
+
+
+{% if intvars.int_numbered is defined -%}
+{% for intname in intvars.int_numbered.keys() -%}
+
+auto {{ intname }}
+iface {{ intname }}
+  address {{ loopback_ip }}/32
+{% endfor -%}
+{% endif -%}
