@@ -11,7 +11,7 @@ router bgp {{ intvars.asn }}
 {% if int_numbered is defined -%}
 {% for item in int_numbered -%}
 {% if item in intvars.int_unnumbered -%}
-  neighbor {{ item }} remote-as external
+  neighbor {{ intvars.int_unnumbered[item].ip_and_mask }} remote-as external
 {% endif -%}
 {% endfor -%}
 {% endif -%}
