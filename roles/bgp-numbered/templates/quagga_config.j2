@@ -1,0 +1,18 @@
+{% set intvars = interfaces[ansible_hostname] -%}
+{% set loopback_ip = intvars.loopback -%}
+{% set int_numbered = intvars.int_numbered -%}
+!
+!
+!
+!
+router-id {{ loopback_ip }}
+router bgp {{ intvars.asn }}
+  bgp router-id {{ loopback_ip }}
+{% if int_numbered is defined -%}
+{% for item in int_numbered -%}
+{% if item in int_unnumbered -%}
+  neighbor {{ name }} remote-as external
+{% endif -%}
+{% endfor -%}
+{% endif -%}
+!
