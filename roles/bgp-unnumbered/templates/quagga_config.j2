@@ -23,6 +23,11 @@ router bgp {{ intvars.asn }}
 {% for item in intvars.int_unnumbered -%}
   neighbor {{ item }} interface
   neighbor {{ item }} remote-as external
+  neighbor {{ item }} description Internal Fabric Network
+  neighbor {{ item }} advertisement-interval 0
+  neighbor {{ item }} timers 1 3
+  neighbor {{ item }} timers connect 3
+  neighbor {{ item }} capability extended-nexthop
 {% endfor -%}
 {% endif -%}
 !
