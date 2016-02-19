@@ -11,6 +11,7 @@ interfaces:
                 ip_and_mask: "10.1.1.5/30"
         int_unnumbered: ["swp51", "swp52"]
         asn: 65001
+        bgp_neighbors: ["10.2.1.5", "10.2.1.6"]
     leaf02:
         loopback: "10.2.1.2"
         int_numbered:
@@ -22,6 +23,7 @@ interfaces:
                 ip_and_mask: "10.1.1.13/30"
         int_unnumbered: ["swp51", "swp52"]
         asn: 65002
+        bgp_neighbors: ["10.2.1.5", "10.2.1.6"]
     spine01:
         loopback: "10.2.1.5"
         int_numbered:
@@ -31,6 +33,7 @@ interfaces:
                 ip_and_mask: "10.1.1.10/30"
         int_unnumbered: ["swp1", "swp2"]
         asn: 65005
+        bgp_neighbors: ["10.2.1.1", "10.2.1.2"]
     spine02:
         loopback: "10.2.1.6"
         int_numbered:
@@ -40,6 +43,7 @@ interfaces:
                 ip_and_mask: "10.1.1.14/30"
         int_unnumbered: ["swp1", "swp2"]
         asn: 65006
+        bgp_neighbors: ["10.2.1.1", "10.2.1.2"]
     server01:
         int_numbered:
             eth1:
