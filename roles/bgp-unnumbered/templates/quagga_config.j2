@@ -19,7 +19,7 @@ router bgp {{ intvars.asn }}
   maximum-paths 64
   bgp bestpath as-path multipath-relax
   bgp bestpath compare-routerid
-{% if int_numbered is defined -%}
+{% if int_unnumbered is defined -%}
 {% for item in intvars.int_unnumbered -%}
   neighbor {{ item }} interface
   neighbor {{ item }} remote-as external
@@ -30,4 +30,12 @@ router bgp {{ intvars.asn }}
   neighbor {{ item }} capability extended-nexthop
 {% endfor -%}
 {% endif -%}
+!
+address-family ipv6 unicast
+{% if int_unnumbered is defined -%}
+{% for item in intvars.int_unnumbered -%}
+  neighbor {{ item }} activate
+{% endfor -%}
+{% endif -%}
+exit-address-family
 !
