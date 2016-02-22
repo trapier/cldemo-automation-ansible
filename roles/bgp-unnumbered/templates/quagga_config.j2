@@ -29,7 +29,7 @@ router bgp {{ intvars.asn }}
   neighbor {{ item }} timers connect 3
   neighbor {{ item }} capability extended-nexthop
   neighbor {{ item }} prefix-list everything in
-  neighbor {{ item }} capability everything out
+  neighbor {{ item }} prefix-list everything out
 {% endfor -%}
 {% endif -%}
 !
