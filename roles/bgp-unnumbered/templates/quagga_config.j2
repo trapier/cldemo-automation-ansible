@@ -17,7 +17,6 @@ router-id {{ loopback_ip }}
 router bgp {{ intvars.asn }}
   bgp router-id {{ loopback_ip }}
   network {{ loopback_ip }}/32
-  bgp default show-hostname
   maximum-paths 64
   bgp bestpath as-path multipath-relax
   bgp bestpath compare-routerid
