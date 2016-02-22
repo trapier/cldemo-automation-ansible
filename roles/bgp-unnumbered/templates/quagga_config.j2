@@ -39,3 +39,9 @@ address-family ipv6 unicast
 {% endif -%}
 exit-address-family
 !
+{% if intvars.int_unnumbered is defined -%}
+{% for item in intvars.int_unnumbered -%}
+  ip prefix-list {{ item }} seq 10 permit any
+{% endfor -%}
+{% endif -%}
+!
