@@ -28,6 +28,8 @@ router bgp {{ intvars.asn }}
   neighbor {{ item }} timers 1 3
   neighbor {{ item }} timers connect 3
   neighbor {{ item }} capability extended-nexthop
+  neighbor {{ item }} prefix-list everything in
+  neighbor {{ item }} capability everything out
 {% endfor -%}
 {% endif -%}
 !
@@ -39,9 +41,5 @@ address-family ipv6 unicast
 {% endif -%}
 exit-address-family
 !
-{% if intvars.int_unnumbered is defined -%}
-{% for item in intvars.int_unnumbered -%}
-  ip prefix-list {{ item }} seq 10 permit any
-{% endfor -%}
-{% endif -%}
+ip prefix-list everything seq 10 permit 0.0.0.0/0 le 32
 !
