@@ -17,6 +17,13 @@ router-id {{ loopback_ip }}
 router bgp {{ intvars.asn }}
   bgp router-id {{ loopback_ip }}
   network {{ loopback_ip }}/32
+  {% if int_numbered is defined -%}
+  {% for item in int_numbered -%}
+  {% if item not in intvars.int_unnumbered -%}
+    network {{ int_numbered[item].ip_and_mask }}
+  {% endif -%}
+  {% endfor -%}
+  {% endif -%}
   maximum-paths 64
   bgp bestpath as-path multipath-relax
   bgp bestpath compare-routerid
