@@ -1,7 +1,7 @@
 # networking
 interfaces:
     leaf01:
-        loopback: "10.2.1.1"
+        loopback: "10.0.0.11"
         int_numbered:
             swp1:
                 ip_and_mask: "172.16.1.1/24"
@@ -10,9 +10,9 @@ interfaces:
             swp52:
                 ip_and_mask: "10.1.1.5/30"
         int_unnumbered: ["swp51", "swp52"]
-        asn: 65001
+        asn: 65011
     leaf02:
-        loopback: "10.2.1.2"
+        loopback: "10.0.0.12"
         int_numbered:
             swp2:
                 ip_and_mask: "172.16.2.1/24"
@@ -21,25 +21,25 @@ interfaces:
             swp52:
                 ip_and_mask: "10.1.1.13/30"
         int_unnumbered: ["swp51", "swp52"]
-        asn: 65002
+        asn: 65012
     spine01:
-        loopback: "10.2.1.5"
+        loopback: "10.0.0.21"
         int_numbered:
             swp1:
                 ip_and_mask: "10.1.1.2/30"
             swp2:
                 ip_and_mask: "10.1.1.10/30"
         int_unnumbered: ["swp1", "swp2"]
-        asn: 65005
+        asn: 65021
     spine02:
-        loopback: "10.2.1.6"
+        loopback: "10.0.0.22"
         int_numbered:
             swp1:
                 ip_and_mask: "10.1.1.6/30"
             swp2:
                 ip_and_mask: "10.1.1.14/30"
         int_unnumbered: ["swp1", "swp2"]
-        asn: 65006
+        asn: 65022
     server01:
         int_numbered:
             eth1:
