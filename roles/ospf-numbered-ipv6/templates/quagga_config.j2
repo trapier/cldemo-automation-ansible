@@ -15,7 +15,7 @@ interface {{item}}
 !
 router-id {{ loopback_ip }}
 router ospf6
-  ospf router-id {{ loopback_ip }}
+  router-id {{ loopback_ip }}
   {% for item in int_numbered -%}
   interface {{ item }} area 0.0.0.0
   {% endfor -%}
