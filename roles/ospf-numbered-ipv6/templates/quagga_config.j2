@@ -1,16 +1,10 @@
 {% set intvars = interfaces[ansible_hostname] -%}
 {% set loopback_ip = intvars.loopback -%}
 {% set int_numbered = intvars.int_numbered -%}
-router-id {{ loopback_ip }}
-router ospf6
-  router-id {{ loopback_ip }}
-!
 interface lo
-  ipv6 ospf6 area 0.0.0.0
 {% if int_numbered is defined -%}
 {% for item in int_numbered -%}
 interface {{item}}
-  area 0.0.0.0
   ipv6 ospf6 network point-to-point
 !
 {% endfor -%}
@@ -19,4 +13,10 @@ interface {{item}}
 !
 !
 !
+router-id {{ loopback_ip }}
+router ospf6
+  ospf router-id {{ loopback_ip }}
+  {% for item in int_numbered -%}
+  interface {{ item }} area 0.0.0.0
+  {% endfor -%}
 !
