@@ -1,3 +1,4 @@
+#jinja2:trim_blocks: False 
 {% set intvars = interfaces[ansible_hostname] %}
 {% set loopback_ip = intvars.loopback -%}
 
@@ -16,6 +17,6 @@ iface eth0 inet dhcp
 
 auto {{ intname }}
 iface {{ intname }}
-  address {{ intvars.int_numbered[intname].ip_and_mask }} 
+  address {{ intvars.int_numbered[intname].ip_and_mask }}
 {% endfor -%}
 {% endif -%}
