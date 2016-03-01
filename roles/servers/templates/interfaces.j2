@@ -14,6 +14,17 @@ auto eth0
 iface eth0 inet dhcp
 
 
+{% if ipv6 %}
+{% if intvars.int_numbered is defined -%}
+{% for intname in intvars.int_numbered.keys() -%}
+auto {{ intname }}
+iface {{ intname }} inet6 static
+  address {{ intvars.int_numbered[intname].ip }}
+  netmask {{ intvars.int_numbered[intname].mask }}
+  up ip route add fd00::/8 via {{ intvars.int_numbered[intname].gateway }}
+{% endfor -%}
+{% endif -%}
+{% else %}
 {% if intvars.int_numbered is defined -%}
 {% for intname in intvars.int_numbered.keys() -%}
 auto {{ intname }}
@@ -24,3 +35,4 @@ iface {{ intname }} inet static
   up ip route add 172.16.0.0/16 via {{ intvars.int_numbered[intname].gateway }}
 {% endfor -%}
 {% endif -%}
+{% endif %}

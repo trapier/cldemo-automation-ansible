@@ -4,7 +4,7 @@
 auto lo
 iface lo inet loopback
 {% if loopback_ip is defined -%}
-  address {{ loopback_ip }}/32
+  address {{ loopback_ip }}/{% if ipv6 %}128{% else %}32{% endif %}
 {% endif -%}
 
 auto eth0
