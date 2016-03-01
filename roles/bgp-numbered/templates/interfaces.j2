@@ -1,11 +1,10 @@
-#jinja2:trim_blocks: False 
 {% set intvars = interfaces[ansible_hostname] %}
 {% set loopback_ip = intvars.loopback -%}
 
 auto lo
 iface lo inet loopback
 {% if loopback_ip is defined -%}
-  address {{ loopback_ip }}/{% if ipv6 %}128{% else %}32{% endif %}
+  address {{ loopback_ip }}/32
 {% endif -%}
 
 auto eth0
