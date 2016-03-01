@@ -17,7 +17,7 @@ iface eth0 inet dhcp
 auto {{ intname }}
 iface {{ intname }}
 {% if intname in intvars.int_unnumbered -%}
-  address {{ loopback_ip }}/{% if ipv6 %}128{% else %}32{% endif %}
+  address {{ loopback_ip }}/{% if ipv6 %}128{% else %}32{% endif %} 
 {% else -%}
   address {{ intvars.int_numbered[intname].ip_and_mask }}
 {% endif -%}

@@ -16,6 +16,6 @@ iface eth0 inet dhcp
 
 auto {{ intname }}
 iface {{ intname }}
-  address {{ intvars.int_numbered[intname].ip_and_mask }}
+  address {{ intvars.int_numbered[intname].ip_and_mask }} 
 {% endfor -%}
 {% endif -%}

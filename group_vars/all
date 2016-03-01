@@ -1,5 +1,5 @@
 # networking
-ipv6: false
+ipv6: true
 interfaces:
     leaf01:
         loopback: "fd00:11"
