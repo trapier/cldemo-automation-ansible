@@ -1,27 +1,19 @@
-#jinja2:trim_blocks: False
 {% set intvars = interfaces[ansible_hostname] %}
-{% set loopback_ip = intvars.loopback -%}
-{% if intvars.bridges is defined -%}
-{% set swbridges = intvars.bridges -%}
-{% endif -%}
+# /etc/network/interfaces template for servers ({{ansible_hostname}})
+# Created by Ansible
 
 auto lo
 iface lo inet loopback
-{% if loopback_ip is defined -%}
-  address {{ loopback_ip }}
-{% endif -%}
 
 auto eth0
 iface eth0 inet dhcp
 
 
-{% if intvars.int_numbered is defined -%}
-{% for intname in intvars.int_numbered.keys() -%}
-auto {{ intname }}
-iface {{ intname }} inet static
-  address {{ intvars.int_numbered[intname].ip }}
-  netmask {{ intvars.int_numbered[intname].mask }}
-  up ip route add 10.0.0.0/8 via {{ intvars.int_numbered[intname].gateway }}
-  up ip route add 172.16.0.0/16 via {{ intvars.int_numbered[intname].gateway }}
-{% endfor -%}
-{% endif -%}
+{% for iface in intvars %}
+auto {{ iface }}
+iface {{ iface }} inet static
+    address {{ intvars[iface].ip }}
+    netmask {{ intvars[iface].mask }}
+    up ip route add 10.0.0.0/8 via {{ intvars[iface].mask }}
+    up ip route add 172.16.0.0/16 via {{ intvars[iface].mask }}
+{% endfor %}

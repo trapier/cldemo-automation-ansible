@@ -2,9 +2,17 @@
   template: src=interfaces.j2 dest=/etc/network/interfaces
   notify: reload networking
 
+- name: ensure quagga is running
+  service: name=quagga state=started
+
 - name: configure quagga daemons file
-  template: src=quagga_daemon.j2 dest=/etc/quagga/daemons
+  copy: src=quagga_daemon dest=/etc/quagga/daemons
+  notify:
+    - check quagga
+    - restart quagga
 
 - name: configure quagga configuration
   template: src=quagga_config.j2 dest=/etc/quagga/Quagga.conf
-  notify: restart quagga
+  notify:
+    - check quagga
+    - restart quagga

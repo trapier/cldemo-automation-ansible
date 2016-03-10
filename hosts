@@ -1,6 +1,8 @@
-[switches]
+[leafs]
 leaf01
 leaf02
+
+[spines]
 spine01
 spine02
 

@@ -5,5 +5,8 @@
 - name: reload networking legacy
   shell: ifdown -a && ifup -a
 
+- name: check quagga (fail ansible if dry run fails)
+  shell: bash -c '[[ -z $(vtysh -f /etc/quagga/Quagga.conf --dryrun) ]]'
+  
 - name: restart quagga
   service: name=quagga state=restarted

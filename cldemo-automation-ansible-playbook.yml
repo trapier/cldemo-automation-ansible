@@ -1,10 +1,16 @@
 ---
-- hosts: switches
+- hosts: leafs
   user: cumulus
   become: yes
   become_method: sudo
   roles:
-    - bgp-unnumbered
+    - leafs
+- hosts: spines
+  user: cumulus
+  become: yes
+  become_method: sudo
+  roles:
+    - spines
 - hosts: servers
   user: cumulus
   become: yes

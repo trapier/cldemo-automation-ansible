@@ -1,0 +1,30 @@
+{% set intvars = interfaces[ansible_hostname] %}
+# /etc/network/interfaces template for leaf switches ({{ansible_hostname}})
+# Created by Ansible
+
+auto lo
+iface lo inet loopback
+  address {{ intvars.loopback }}/32
+
+auto eth0
+iface eth0 inet dhcp
+
+
+{% for iface in intvars.neighbors %}
+auto {{ iface }}
+iface {{ iface }}
+    address {{ intvars.neighbors[iface].ip }}
+
+{% endfor %}
+
+
+{% for network in intvars.networks %}
+{% for port in intvars.networks[network].ports %}
+auto {{ port }}
+iface {{ port }}
+
+{% endfor %}
+auto {{ network }}
+    bridge-ports {{ " ".join(intvars.networks[network].ports) }}
+    address {{ intvars.networks[network].ip }}
+{% endfor %}
