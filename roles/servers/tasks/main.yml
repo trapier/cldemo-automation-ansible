@@ -5,3 +5,6 @@
 - name: configure /etc/network/interfaces on the host (using legacy ifupdown)
   template: src=interfaces.j2 dest=/etc/network/interfaces
   notify: reload networking legacy
+
+# Warning: trying to reset ifupdown in ansible often breaks, meaning that you
+# may need to reboot the server for the change to take effect. 
