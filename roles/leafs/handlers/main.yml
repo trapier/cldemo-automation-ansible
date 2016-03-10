@@ -3,7 +3,7 @@
   command: ifreload -a
 
 - name: reload networking legacy
-  shell: ifdown -a && ifup -a
+  shell: ifdown --force -a && ifup --force -a
 
 - name: check quagga
   shell: bash -c '[[ -z $(vtysh -f /etc/quagga/Quagga.conf --dryrun) ]]'
