@@ -7,6 +7,7 @@ iface lo inet loopback
 
 auto eth0
 iface eth0 inet dhcp
+    post-up ip route add default via 192.168.0.1
 
 
 {% for iface in intvars %}
@@ -14,7 +15,6 @@ auto {{ iface }}
 iface {{ iface }} inet static
     address {{ intvars[iface].ip }}
     netmask {{ intvars[iface].mask }}
-    gateway {{ intvars[iface].gateway }}
     up ip route add 10.0.0.0/8 via {{ intvars[iface].gateway }}
     up ip route add 172.16.0.0/16 via {{ intvars[iface].gateway }}
 {% endfor %}
