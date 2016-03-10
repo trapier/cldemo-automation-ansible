@@ -25,7 +25,7 @@ interfaces:
         networks:
             br0:
                 ip: "172.16.2.1/24"
-                ports: ["swp1"]
+                ports: ["swp2"]
         neighbors:
             swp51:
                 ip: "10.1.0.5/31"
