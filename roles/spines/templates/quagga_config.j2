@@ -20,9 +20,7 @@ router bgp {{ intvars.asn }}
 !
 ip prefix-list dc-spine seq 10 permit 0.0.0.0/0
 ip prefix-list dc-spine seq 20 permit 10.0.0.0/24 le 32
-{% set counter = 20 }
-{% for network in networks %}
-{% set counter = counter + 10 %}
+{% for counter, network in enumerate(networks) %}
 ip prefix-list dc-spine seq {{ counter }} permit {{ network }}
 {% endfor %}
 ip prefix-list dc-spine seq 500 deny any

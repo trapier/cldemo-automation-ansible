@@ -25,19 +25,15 @@ router bgp {{ intvars.asn }}
 !
 ip prefix-list dc-leaf-in seq 10 permit 0.0.0.0/0
 ip prefix-list dc-leaf-in seq 20 permit 10.0.0.0/24 le 32
-{% set counter = 20 }
-{% for network in networks %}
+{% for counter, network in enumerate(networks, 21) %}
 {% if networks[network].source != ansible_hostname %}
-{% set counter = counter + 10 %}
 ip prefix-list dc-leaf-in seq {{ counter }} permit {{ network }}
 {% endif %}
 {% endfor %}
 ip prefix-list dc-leaf-in seq 500 deny any
 ip prefix-list dc-leaf-out seq 10 permit 10.0.0.0/24 le 32
-{% set counter = 10 }
-{% for network in networks %}
+{% for counter, network in enumerate(networks) %}
 {% if networks[network].source == ansible_hostname %}
-{% set counter = counter + 10 %}
 ip prefix-list dc-leaf-in seq {{ counter }} permit {{ network }}
 {% endif %}
 {% endfor %}
