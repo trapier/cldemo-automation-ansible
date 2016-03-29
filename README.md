@@ -30,8 +30,16 @@ spines via the specified hostnames is required. Setting up this topology is
 outside the scope of this document.
 
 This demo is written using Ansible 2.0. Install Ansible on the management server
-before you begin. Instructions for installing Ansible can be found here:
+before you begin. If you are using the
+[Vagrant reference topology](http://github.com/cumulusnetworks/cldemo-vagrant),
+this can be done by just running `apt-get install ansible`. Otherwise,
+instructions for installing Ansible can be found here:
 https://docs.ansible.com/ansible/intro_installation.html
 
 Running the Demo
 ----------------
+    git clone https://github.com/cumulusnetworks/cldemo-automation-ansible
+    cd cldemo-automation-ansible
+    ansible-playbook deploy-bgp.yml
+    ssh server01
+    ping 172.16.2.101
