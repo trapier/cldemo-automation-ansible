@@ -40,6 +40,7 @@ Running the Demo
 ----------------
     git clone https://github.com/cumulusnetworks/cldemo-automation-ansible
     cd cldemo-automation-ansible
-    ansible-playbook deploy-bgp.yml
+    ansible-playbook run-demo.yml
     ssh server01
-    ping 172.16.2.101
+    wget 172.16.2.101
+    cat index
