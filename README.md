@@ -25,7 +25,6 @@ This demo requires you set up a topology as per the diagram below:
              |            |       |            |
              +------------+       +------------+
 
-This topology is also described in the `topology.dot` and `topology.json` files.
 Additionally, an out of band management server that can SSH into the leafs and
 spines via the specified hostnames is required. Setting up this topology is
 outside the scope of this document.
@@ -36,4 +35,3 @@ https://docs.ansible.com/ansible/intro_installation.html
 
 Running the Demo
 ----------------
-

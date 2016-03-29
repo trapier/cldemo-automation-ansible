@@ -35,7 +35,7 @@ interfaces:
                 peer: "10.1.0.6"
     spine01:
         loopback: "10.0.0.21"
-        asn: 65021
+        asn: 65020
         neighbors:
             swp1:
                 ip: "10.1.0.0/31"
@@ -51,7 +51,7 @@ interfaces:
                 peer: "10.1.0.13"
     spine02:
         loopback: "10.0.0.22"
-        asn: 65022
+        asn: 65020
         neighbors:
             swp1:
                 ip: "10.1.0.2/31"
