@@ -42,5 +42,5 @@ Running the Demo
     cd cldemo-automation-ansible
     ansible-playbook run-demo.yml
     ssh server01
-    wget 172.16.2.101
-    cat index
+    wget 172.16.2.101 # access apache on server02 from server01
+    cat index.html
