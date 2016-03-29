@@ -1,5 +1,5 @@
 {% set intvars = interfaces[ansible_hostname] %}
-# /etc/network/interfaces template for leaf switches ({{ansible_hostname}})
+# /etc/network/interfaces template for switches ({{ansible_hostname}})
 # Created by Ansible
 
 auto lo
@@ -18,7 +18,7 @@ iface {{ iface }}
 {% endfor %}
 
 
-{% for network in intvars.networks %}
+{% for network in intvars.networks | default(()) %}
 {% for port in intvars.networks[network].ports %}
 auto {{ port }}
 iface {{ port }}

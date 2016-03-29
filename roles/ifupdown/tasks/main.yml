@@ -7,4 +7,4 @@
   notify: reload networking legacy
 
 # Warning: trying to reset ifupdown in ansible often breaks, meaning that you
-# may need to reboot the server for the change to take effect. 
+# may need to reboot the server for the change to take effect.

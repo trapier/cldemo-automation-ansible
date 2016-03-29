@@ -4,16 +4,18 @@
   become: yes
   become_method: sudo
   roles:
-    - leafs
+    - ifupdown2
+    - quagga
 - hosts: spines
   user: cumulus
   become: yes
   become_method: sudo
   roles:
-    - spines
+    - ifupdown2
+    - quagga
 - hosts: servers
   user: cumulus
   become: yes
   become_method: sudo
   roles:
-    - servers
+    - ifupdown

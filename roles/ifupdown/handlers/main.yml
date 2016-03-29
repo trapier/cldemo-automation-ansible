@@ -1,0 +1,3 @@
+
+- name: reload networking legacy
+  shell: ifdown --force -a && ifup --force -a
