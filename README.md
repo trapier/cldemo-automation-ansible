@@ -2,6 +2,23 @@ stuff
 ================
 stuff
 
+Quickstart: Run the demo
+------------------------
+(This assumes you are running Ansible 1.9.4 and Vagrant 1.8.4 on your host.)
+
+    git clone https://github.com/cumulusnetworks/cldemo-vagrant
+    cd cldemo-vagrant
+    vagrant up
+    vagrant ssh oob-mgmt-server
+    sudo su - cumulus
+    git clone https://github.com/cumulusnetworks/cldemo-automation-ansible
+    cd cldemo-automation-ansible
+    ansible-playbook run-demo.yml
+    ssh server01
+    wget 172.16.2.101
+    cat index.html
+
+
 Before you start
 ----------------
 This demo requires you set up a topology as per the diagram below:
@@ -35,12 +52,3 @@ before you begin. If you are using the
 this can be done by just running `apt-get install ansible`. Otherwise,
 instructions for installing Ansible can be found here:
 https://docs.ansible.com/ansible/intro_installation.html
-
-Running the Demo
-----------------
-    git clone https://github.com/cumulusnetworks/cldemo-automation-ansible
-    cd cldemo-automation-ansible
-    ansible-playbook run-demo.yml
-    ssh server01
-    wget 172.16.2.101 # access apache on server02 from server01
-    cat index.html
