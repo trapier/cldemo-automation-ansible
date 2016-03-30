@@ -11,6 +11,7 @@ Quickstart: Run the demo
     vagrant up
     vagrant ssh oob-mgmt-server
     sudo su - cumulus
+    sudo apt-get install ansible
     git clone https://github.com/cumulusnetworks/cldemo-automation-ansible
     cd cldemo-automation-ansible
     ansible-playbook run-demo.yml
