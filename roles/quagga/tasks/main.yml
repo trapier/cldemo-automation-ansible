@@ -16,7 +16,6 @@
 # information in group_vars/all. The biggest difference between spine and
 # leaf configuration are the prefix lists - leafs should only advertise their
 # neighboring networks, but spines should advertise any networks they accept.
-# The 'leaf' variable handles this logic for us in our template.
 - name: configure quagga configuration
   template: src=Quagga.conf.j2 dest=/etc/quagga/Quagga.conf
   notify:
