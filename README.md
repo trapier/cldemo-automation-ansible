@@ -1,6 +1,6 @@
-stuff
-================
-stuff
+Ansible Automation Demo
+=======================
+This demo demonstrates using the Ansible automation tool in order to configure switches running Cumulus Linux and servers running Ubuntu. This playbook configures a CLOS topology running BGP numbered in the fabric with Layer 2 bridges to the hosts.
 
 Quickstart: Run the demo
 ------------------------
@@ -11,7 +11,8 @@ Quickstart: Run the demo
     vagrant up oob-mgmt-server oob-mgmt-switch leaf01 leaf02 spine01 spine02 server01 server02
     vagrant ssh oob-mgmt-server
     sudo su - cumulus
-    echo 'deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main' | sudo tee /etc/apt/sources.list.d/ppa_ansible.list -a
+    sudo apt-get install software-properties-common -y
+    sudo apt-add-repository ppa:ansible/ansible
     sudo apt-get update
     sudo apt-get install ansible -qy
     git clone https://github.com/cumulusnetworks/cldemo-automation-ansible
