@@ -27,8 +27,8 @@ router bgp {{ intvars.asn }}
     neighbor fabric prefix-list dc-fabric-in in
     neighbor fabric prefix-list dc-fabric-out out
 {% for neighbor in intvars.neighbors %}
-    neighbor {{ neighbor }} peer-group fabric
     neighbor {{ neighbor }} interface
+    neighbor {{ neighbor }} peer-group fabric
 {% endfor %}
 !
 address-family ipv6 unicast
