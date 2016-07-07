@@ -4,6 +4,10 @@ networks:
         source: "leaf01"
     "172.16.2.0/24":
         source: "leaf02"
+    "172.16.3.0/24":
+        source: "leaf03"
+    "172.16.4.0/24":
+        source: "leaf04"
 interfaces:
     leaf01:
         loopback: "10.0.0.11"
@@ -21,6 +25,26 @@ interfaces:
         networks:
             br0:
                 ip: "172.16.2.1/24"
+                ports: ["swp2"]
+        neighbors:
+            swp51:
+            swp52:
+    leaf03:
+        loopback: "10.0.0.13"
+        asn: 65013
+        networks:
+            br0:
+                ip: "172.16.3.1/24"
+                ports: ["swp1"]
+        neighbors:
+            swp51:
+            swp52:
+    leaf04:
+        loopback: "10.0.0.14"
+        asn: 65014
+        networks:
+            br0:
+                ip: "172.16.4.1/24"
                 ports: ["swp2"]
         neighbors:
             swp51:
@@ -53,3 +77,15 @@ interfaces:
                 ip: "172.16.2.101"
                 mask: "255.255.255.0"
                 gateway: "172.16.2.1"
+    server03:
+        neighbors:
+            eth1:
+                ip: "172.16.3.101"
+                mask: "255.255.255.0"
+                gateway: "172.16.3.1"
+    server04:
+        neighbors:
+            eth2:
+                ip: "172.16.4.101"
+                mask: "255.255.255.0"
+                gateway: "172.16.4.1"
